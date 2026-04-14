@@ -1,0 +1,4 @@
+version: 1
+display_name: RunBrowser
+short_description: Control a user's real Chrome session from a CLI agent
+default_prompt: Use $runbrowser to install, connect, and operate RunBrowser against the user's existing Chrome session.
