@@ -53,12 +53,26 @@ cd runbrowser
 pnpm install
 ```
 
+Or use the bundled helper script from this skill repo:
+
+```bash
+./scripts/setup_extension.sh
+```
+
+To place the upstream repo somewhere specific:
+
+```bash
+./scripts/setup_extension.sh /path/to/runbrowser-upstream
+```
+
 ### 3. Build the Chrome extension
 
 ```bash
 pnpm --filter vite-plugin-extension-reload build
 pnpm run build:extension
 ```
+
+If you used the helper script, it performs these steps for you and prints the final local extension path.
 
 ### 4. Load the extension into Chrome
 
@@ -89,6 +103,7 @@ This repo tells an **AI agent**:
 
 - [`SKILL.md`](./SKILL.md): the actual skill logic
 - [`agents/openai.yaml`](./agents/openai.yaml): UI metadata for skill-enabled clients
+- [`scripts/setup_extension.sh`](./scripts/setup_extension.sh): clone, install, and build the upstream RunBrowser extension locally
 
 ## Quick sanity check
 

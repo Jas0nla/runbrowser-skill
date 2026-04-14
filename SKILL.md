@@ -45,6 +45,18 @@ cd runbrowser
 pnpm install
 ```
 
+Or use the bundled setup script in this skill:
+
+```bash
+./scripts/setup_extension.sh
+```
+
+To choose a custom local folder:
+
+```bash
+./scripts/setup_extension.sh /path/to/runbrowser-upstream
+```
+
 ### 3. Build the extension
 
 The extension depends on a local workspace package, so this build order matters:
@@ -59,6 +71,8 @@ The extension folder you load into Chrome should be:
 ```text
 packages/extension/dist
 ```
+
+If you used the bundled setup script, it prints the exact local `dist` path after a successful build.
 
 ### 4. Load the extension into Chrome
 
