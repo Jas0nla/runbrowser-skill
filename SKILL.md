@@ -35,7 +35,25 @@ After install, confirm the command exists:
 runbrowser --help
 ```
 
-### 2. Download the Chrome extension source
+### 2. Load the bundled Chrome extension first
+
+This skill repo already includes a prebuilt extension bundle at:
+
+```text
+extension/dist
+```
+
+In Chrome:
+
+1. Open `chrome://extensions`
+2. Turn on `Developer mode`
+3. Click `Load unpacked`
+4. Select `extension/dist`
+5. Click the RunBrowser extension icon on the target tab until it turns green
+
+The extension connects Chrome to the local relay on `localhost:19988`.
+
+### 3. Download the Chrome extension source only when you need to rebuild
 
 RunBrowser's npm package installs the CLI only. The Chrome extension must be built from the upstream repo.
 
@@ -57,7 +75,7 @@ To choose a custom local folder:
 ./scripts/setup_extension.sh /path/to/runbrowser-upstream
 ```
 
-### 3. Build the extension
+### 4. Build the extension
 
 The extension depends on a local workspace package, so this build order matters:
 
@@ -74,17 +92,7 @@ packages/extension/dist
 
 If you used the bundled setup script, it prints the exact local `dist` path after a successful build.
 
-### 4. Load the extension into Chrome
-
-In Chrome:
-
-1. Open `chrome://extensions`
-2. Turn on `Developer mode`
-3. Click `Load unpacked`
-4. Select `packages/extension/dist`
-5. Click the RunBrowser extension icon on the target tab until it turns green
-
-The extension connects Chrome to the local relay on `localhost:19988`.
+If you rebuild from upstream instead of using the bundled copy, load `packages/extension/dist` in Chrome.
 
 ## Minimal verification
 

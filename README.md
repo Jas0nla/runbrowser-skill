@@ -1,6 +1,6 @@
 # RunBrowser Skill
 
-This repo is a **shareable agent skill**, not the RunBrowser software itself.
+This repo is a **shareable agent skill** plus a **prebuilt Chrome extension bundle** for quick local loading.
 
 Use it when you want an AI agent such as Codex or Claude Code to control your **real Chrome session** instead of launching a separate browser profile.
 
@@ -9,12 +9,12 @@ Use it when you want an AI agent such as Codex or Claude Code to control your **
 - A portable `SKILL.md` for agent environments
 - A small `agents/openai.yaml` metadata file for skill UIs
 - A practical setup and usage guide for RunBrowser
+- A prebuilt Chrome extension at `extension/dist` for easy sharing
 
 ## What this repo is not
 
 - Not the official RunBrowser source repo
 - Not the RunBrowser CLI package
-- Not a packaged Chrome extension
 - Not a replacement for the upstream project
 
 ## Official RunBrowser project
@@ -25,7 +25,15 @@ Use the upstream project for the actual software:
 
 ## Where the Chrome extension lives
 
-The Chrome extension comes from the upstream repo, not from this skill repo.
+For convenience, this repo now includes a prebuilt extension bundle here:
+
+```text
+extension/dist
+```
+
+If you just want to try RunBrowser quickly, load that folder directly in Chrome.
+
+The extension originally comes from the upstream repo, and you can rebuild it from source whenever needed.
 
 In the official RunBrowser repo, the extension source is here:
 
@@ -45,7 +53,16 @@ packages/extension/dist
 npm i -g @jiweiyuan/runbrowser
 ```
 
-### 2. Clone the upstream RunBrowser repo
+### 2. Load the bundled extension immediately
+
+1. Open `chrome://extensions`
+2. Turn on `Developer mode`
+3. Click `Load unpacked`
+4. Select `extension/dist`
+
+### 3. Rebuild the extension from upstream when needed
+
+If you prefer to regenerate the extension from source:
 
 ```bash
 git clone https://github.com/runbrowser/runbrowser.git
@@ -65,7 +82,7 @@ To place the upstream repo somewhere specific:
 ./scripts/setup_extension.sh /path/to/runbrowser-upstream
 ```
 
-### 3. Build the Chrome extension
+Then run:
 
 ```bash
 pnpm --filter vite-plugin-extension-reload build
@@ -73,13 +90,6 @@ pnpm run build:extension
 ```
 
 If you used the helper script, it performs these steps for you and prints the final local extension path.
-
-### 4. Load the extension into Chrome
-
-1. Open `chrome://extensions`
-2. Turn on `Developer mode`
-3. Click `Load unpacked`
-4. Select `packages/extension/dist`
 
 ### 5. Install this skill for your agents
 
@@ -104,6 +114,7 @@ This repo tells an **AI agent**:
 - [`SKILL.md`](./SKILL.md): the actual skill logic
 - [`agents/openai.yaml`](./agents/openai.yaml): UI metadata for skill-enabled clients
 - [`scripts/setup_extension.sh`](./scripts/setup_extension.sh): clone, install, and build the upstream RunBrowser extension locally
+- [`extension/dist`](./extension/dist): prebuilt Chrome extension bundle you can load directly
 
 ## Quick sanity check
 
